@@ -1,10 +1,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/white"
     android:layout_height="match_parent"
-     >
+    android:background="@color/white">
 
 
     <TextView
@@ -16,7 +14,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="24dp"
-        android:text="Coloque o horário de Acordar:"
+        android:fontFamily="@font/roboto_regular"
+        android:text="coloque o horário de acordar:"
         android:textColor="@color/grey_383838"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,102 +23,30 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TimePicker
-        android:id="@+id/cardViewWakeUp"
-        android:layout_width="411dp"
-        android:layout_height="344dp"
-        android:layout_marginTop="24dp"
+        android:id="@+id/timePickerWakeUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
         android:timePickerMode="spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/putHourWakeUpTextView">
-        <!--
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayoutWakeUp"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:clickable="true"
-            android:focusable="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/animationViewWake">
-
-            <TextView
-                android:id="@+id/hourFilledWake"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_light"
-                android:gravity="center"
-                android:shadowRadius="24"
-                android:text="00"
-                android:textColor="@color/black"
-                android:textSize="120sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=":"
-                android:textColor="@color/black"
-                android:fontFamily="@font/roboto_light"
-                android:textSize="120sp"
-                app:layout_constraintBottom_toBottomOf="@+id/hour_filled"
-                app:layout_constraintStart_toEndOf="@+id/hourFilledWake"
-                app:layout_constraintTop_toTopOf="@+id/hourFilledWake" />
-
-            <TextView
-                android:id="@+id/minuteFilledWake"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="00"
-                android:fontFamily="@font/roboto_light"
-
-                android:textColor="@color/black"
-                android:textSize="120sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView2"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_alarm_grey_24dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
--->
 
     </TimePicker>
 
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animation_view"
-        android:layout_width="263dp"
-        android:layout_height="236dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardViewWakeUp"
-        app:lottie_autoPlay="true"
-        app:lottie_fileName="sun.json"
-        app:lottie_loop="true" />
     <Button
         android:id="@+id/button_calculator"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="match_parent"
         android:layout_height="48dp"
+        android:layout_gravity="bottom"
         android:layout_marginStart="290dp"
         android:layout_marginEnd="16dp"
-        android:textColor="@color/white"
-        android:background="@drawable/rounded_corners_button"
         android:layout_marginBottom="16dp"
-        android:layout_gravity="bottom"
+        android:background="@drawable/rounded_corners_button"
         android:text="Gerar Lembretes"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment/*
 import kotlinx.android.synthetic.main.fragment_fill_time_wake_up.constraintLayoutWakeUp
 import kotlinx.android.synthetic.main.fragment_fill_time_wake_up.hourFilledWake
 import kotlinx.android.synthetic.main.fragment_fill_time_wake_up.minuteFilledWake*/
+import kotlinx.android.synthetic.main.fragment_fill_time.*
+import kotlinx.android.synthetic.main.fragment_fill_time_wake_up.*
 import kotlinx.android.synthetic.main.toolbar_fill_time.button_back
 
 /**
@@ -38,14 +40,13 @@ class FillTimeWakeUpFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        addHourMinuteToWakeUp()
+        getTimePickerInfo()
     }
 
-    private fun addHourMinuteToWakeUp() {/*
-        constraintLayoutWakeUp.setOnClickListener {
-            context?.let { configTimePickerUtil(hourFilledWake, minuteFilledWake, it) }
-        }*/
+    private fun getTimePickerInfo(){
+        configTimePickerUtil(timePickerWakeUp, context!!)
     }
+
 
     private fun onBackPressed() {
         activity?.supportFragmentManager?.beginTransaction()
