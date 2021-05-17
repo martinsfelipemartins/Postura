@@ -1,24 +1,56 @@
 package br.com.postura.utils
 
 import android.content.Context
-import android.os.Build
 import android.widget.TimePicker
 import android.widget.Toast
 import java.util.*
 
-var currentTime: Date = Calendar.getInstance().time
-var currenthorinha: String= currentTime.toString()
-var hourListener: String= ""
-var minuteListener: String= ""
-fun configTimePickerUtil(timePicker: TimePicker, context: Context) {
+var hourSleepListener: String= ""
+var minuteSleepListener: String= ""
+var hourWakeUpListener: String= ""
+var minuteWakeUpListener: String= ""
+
+fun configTimePickerUtil(timePicker: TimePicker, context: Context, isSleep: Boolean) {
     timePicker.setOnTimeChangedListener { view, hourOfDay, minute ->
-        hourListener = hourOfDay.toString()
-        minuteListener = minute.toString()
-     /*   currenthorinha = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            timePicker.hour.toString()
-        } else {
-            timePicker.currentHour.toString()
-        }*/
+       if (isSleep) {
+           hourSleepListener = hourOfDay.toString()
+           minuteSleepListener = minute.toString()
+       }else{
+           hourWakeUpListener = hourOfDay.toString()
+           minuteWakeUpListener = minute.toString()
+       }
         Toast.makeText(context, "hour: $hourOfDay minute: $minute", Toast.LENGTH_SHORT).show()
+    }
+}
+
+fun getSleepMinutesSelected(): String {
+    return if (minuteSleepListener.isEmpty()) {
+        Calendar.getInstance().get(Calendar.MINUTE).toString()
+    } else {
+        minuteSleepListener
+    }
+}
+
+fun getSleepHourSelected(): String {
+    return if (hourSleepListener.isEmpty()) {
+        Calendar.getInstance().get(Calendar.HOUR_OF_DAY).toString()
+    } else {
+        hourSleepListener
+    }
+}
+
+fun getWakeUpMinutesSelected(): String {
+    return if (minuteWakeUpListener.isEmpty()) {
+        Calendar.getInstance().get(Calendar.MINUTE).toString()
+    } else {
+        minuteWakeUpListener
+    }
+}
+
+fun getWakeUpHourSelected(): String {
+    return if (hourWakeUpListener.isEmpty()) {
+        Calendar.getInstance().get(Calendar.HOUR_OF_DAY).toString()
+    } else {
+        hourWakeUpListener
     }
 }

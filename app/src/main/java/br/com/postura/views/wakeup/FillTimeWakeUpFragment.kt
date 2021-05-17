@@ -11,6 +11,8 @@ import kotlinx.android.synthetic.main.fragment_fill_time_wake_up.hourFilledWake
 import kotlinx.android.synthetic.main.fragment_fill_time_wake_up.minuteFilledWake*/
 import br.com.postura.R
 import br.com.postura.utils.configTimePickerUtil
+import br.com.postura.utils.getWakeUpHourSelected
+import br.com.postura.utils.getWakeUpMinutesSelected
 import br.com.postura.views.sleep.FillTimeSleepFragment
 import br.com.postura.views.generatedhours.GeneratedHoursActivity
 import kotlinx.android.synthetic.main.fragment_fill_time_wake_up.*
@@ -19,10 +21,17 @@ import kotlinx.android.synthetic.main.toolbar_fill_time.button_back
 /**
  * A simple [Fragment] subclass.
  */
-class FillTimeWakeUpFragment : Fragment() {
 
+class FillTimeWakeUpFragment : Fragment() {
     companion object {
-        fun newInstance() = FillTimeWakeUpFragment()
+        lateinit var hourSleep: String
+        lateinit var minutesSleep: String
+
+        fun newInstance(hour: String, minute: String): FillTimeWakeUpFragment {
+            hourSleep = hour
+            minutesSleep = minute
+        return FillTimeWakeUpFragment()
+        }
         const val FRAGMENT_TAG = "FillTimeWakeUpFragment"
 
     }
@@ -48,9 +57,8 @@ class FillTimeWakeUpFragment : Fragment() {
     }
 
     private fun getTimePickerInfo(){
-        configTimePickerUtil(timePickerWakeUp, context!!)
+        configTimePickerUtil(timePickerWakeUp, context!!, false)
     }
-
 
     private fun onBackPressed() {
         activity?.supportFragmentManager?.beginTransaction()
@@ -70,7 +78,7 @@ class FillTimeWakeUpFragment : Fragment() {
     }
     private fun goToCalculatorScreen(){
         button_calculator.setOnClickListener {
-            startActivity(Intent(context, GeneratedHoursActivity::class.java))
+            startActivity(Intent(context, GeneratedHoursActivity.newInstance(hourSleep, minutesSleep, getWakeUpHourSelected(), getWakeUpMinutesSelected())))
         }
     }
 }
