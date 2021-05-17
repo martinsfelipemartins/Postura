@@ -26,7 +26,7 @@ class GeneratedHourAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindView(chosenHours[position])
-        holder.itemView.switch1.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { compoundButton, bChecked ->
+        holder.itemView.switchButton.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { compoundButton, bChecked ->
            val context = compoundButton.context
             if (bChecked) {
                 Toast.makeText(context, "Checked", Toast.LENGTH_LONG).show()
