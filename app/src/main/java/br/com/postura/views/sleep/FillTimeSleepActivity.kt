@@ -1,19 +1,23 @@
-package br.com.postura
+package br.com.postura.views.sleep
 
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import br.com.postura.R
+import br.com.postura.views.WelcomeDialog
 import kotlinx.android.synthetic.main.toolbar_fill_time.tittle_toolbar
 import kotlinx.android.synthetic.main.toolbar_fill_time.toolbar
 
-class FillTimeActivity : AppCompatActivity() {
+class FillTimeSleepActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fill_time)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                    .replace(R.id.container_fill_time, FillTimeFragment.newInstance())
+                    .replace(R.id.container_fill_time,
+                        FillTimeSleepFragment.newInstance()
+                    )
                     .commitNow()
         }
         configToolbar()
@@ -36,7 +40,7 @@ class FillTimeActivity : AppCompatActivity() {
                     .setCustomAnimations(R.anim.back_right_to_left, R.anim.back_left_to_right)
                     .replace(
                             R.id.container_fill_time,
-                            FillTimeFragment.newInstance()
+                        FillTimeSleepFragment.newInstance()
                     )
                     .commitNow()
         } else {

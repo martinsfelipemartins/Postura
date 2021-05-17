@@ -1,10 +1,11 @@
-package br.com.postura
+package br.com.postura.views
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import br.com.postura.R
 import kotlinx.android.synthetic.main.welcome_dialog.button_understand
 
 class WelcomeDialog : DialogFragment() {

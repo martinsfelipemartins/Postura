@@ -1,6 +1,6 @@
-package br.com.postura
+package br.com.postura.views.wakeup
 
-import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,17 +9,29 @@ import androidx.fragment.app.Fragment/*
 import kotlinx.android.synthetic.main.fragment_fill_time_wake_up.constraintLayoutWakeUp
 import kotlinx.android.synthetic.main.fragment_fill_time_wake_up.hourFilledWake
 import kotlinx.android.synthetic.main.fragment_fill_time_wake_up.minuteFilledWake*/
-import kotlinx.android.synthetic.main.fragment_fill_time.*
+import br.com.postura.R
+import br.com.postura.utils.configTimePickerUtil
+import br.com.postura.utils.getWakeUpHourSelected
+import br.com.postura.utils.getWakeUpMinutesSelected
+import br.com.postura.views.sleep.FillTimeSleepFragment
+import br.com.postura.views.generatedhours.GeneratedHoursActivity
 import kotlinx.android.synthetic.main.fragment_fill_time_wake_up.*
 import kotlinx.android.synthetic.main.toolbar_fill_time.button_back
 
 /**
  * A simple [Fragment] subclass.
  */
-class FillTimeWakeUpFragment : Fragment() {
 
+class FillTimeWakeUpFragment : Fragment() {
     companion object {
-        fun newInstance() = FillTimeWakeUpFragment()
+        lateinit var hourSleep: String
+        lateinit var minutesSleep: String
+
+        fun newInstance(hour: String, minute: String): FillTimeWakeUpFragment {
+            hourSleep = hour
+            minutesSleep = minute
+        return FillTimeWakeUpFragment()
+        }
         const val FRAGMENT_TAG = "FillTimeWakeUpFragment"
 
     }
@@ -41,17 +53,20 @@ class FillTimeWakeUpFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         getTimePickerInfo()
+        goToCalculatorScreen()
     }
 
     private fun getTimePickerInfo(){
-        configTimePickerUtil(timePickerWakeUp, context!!)
+        configTimePickerUtil(timePickerWakeUp, context!!, false)
     }
-
 
     private fun onBackPressed() {
         activity?.supportFragmentManager?.beginTransaction()
             ?.setCustomAnimations(R.anim.back_right_to_left, R.anim.back_left_to_right)
-            ?.replace(R.id.container_fill_time, FillTimeFragment.newInstance(), FRAGMENT_TAG)
+            ?.replace(R.id.container_fill_time,
+                FillTimeSleepFragment.newInstance(),
+                FRAGMENT_TAG
+            )
             ?.commitNow()
     }
 
@@ -59,6 +74,11 @@ class FillTimeWakeUpFragment : Fragment() {
         activity?.button_back?.visibility = View.VISIBLE
         activity?.button_back?.setOnClickListener {
             onBackPressed()
+        }
+    }
+    private fun goToCalculatorScreen(){
+        button_calculator.setOnClickListener {
+            startActivity(Intent(context, GeneratedHoursActivity.newInstance(hourSleep, minutesSleep, getWakeUpHourSelected(), getWakeUpMinutesSelected())))
         }
     }
 }
