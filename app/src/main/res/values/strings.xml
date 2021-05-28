@@ -2,5 +2,15 @@
     <string name="app_name">Postura</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="next_schedule">Próximo horário</string>
+    <string name="notif_channel_name">Padrão</string>
+    <string name="notif_channel_description">Notificação de Lembrete</string>
+    <string name="notif_title">Você está de postura correta?</string>
+    <string name="notif_text">Acerte a postura.</string>
+    <string name="notif_button">OK</string>
+    <string name="notif_teste">teste</string>
+    <string name="notif_channel">alert</string>
+    <string name="notification_channel_id" translatable="false">Alarm_channel</string>
+    <string name="notification_channel_name" translatable="true">Alarm</string>
+    <string name="button_next">próximo horário</string>
+
 </resources>
