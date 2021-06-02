@@ -5,10 +5,11 @@ import android.app.NotificationManager
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.os.SystemClock
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.getSystemService
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -18,7 +19,9 @@ import br.com.postura.R
 import br.com.postura.adapter.GeneratedHourAdapter
 import br.com.postura.data.model.HourCalculed
 import br.com.postura.service.AlarmService
+import br.com.postura.utils.RandomUtil
 import kotlinx.android.synthetic.main.generated_hours_fragment.*
+import java.lang.System.currentTimeMillis
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -28,6 +31,8 @@ class GeneratedHoursFragment : Fragment() {
     private val hours = ArrayList<HourCalculed>()
     private val adapter = GeneratedHourAdapter(hours)
     private val calendar = Calendar.getInstance()
+    private val alarmService = AlarmService(requireContext())
+
 
     companion object {
         lateinit var hourSleep: String
@@ -76,10 +81,27 @@ class GeneratedHoursFragment : Fragment() {
         initRecyclerView()
         configTimeSelected()
 
-        val timeSystem = System.currentTimeMillis()
-        val alarmService = AlarmService(requireContext())
-        textTittle.setOnClickListener {
-            alarmService.setExactAlarm(timeSystem)
+        configAlarmNotifications(alarmService)
+    }
+
+    private fun configAlarmNotifications(alarmService: AlarmService) {
+        for (i in hours) {
+            val hour = i.generatedHour
+            val minute = i.generatedMinute
+            val calendar = Calendar.getInstance()
+            calendar.set(Calendar.HOUR_OF_DAY, hour.toInt())
+            calendar.set(Calendar.MINUTE, minute.toInt())
+            calendar.set(Calendar.SECOND, 0)
+            calendar.set(Calendar.MILLISECOND, 0)
+            val now = Calendar.getInstance()
+            if (now.before(calendar)) {
+                alarmService.setExactAlarm(calendar.timeInMillis, RandomUtil.getRandomInt())
+
+            } else {
+                calendar.add(Calendar.DATE, 1)
+                alarmService.setExactAlarm(calendar.timeInMillis, RandomUtil.getRandomInt())
+            }
+
         }
     }
 
@@ -152,9 +174,6 @@ class GeneratedHoursFragment : Fragment() {
         }
         val days = (difference / (1000 * 60 * 60 * 24)).toInt()
         val hours = ((difference - 1000 * 60 * 60 * 24 * days) / (1000 * 60 * 60)).toInt()
-        val min =
-            (difference - 1000 * 60 * 60 * 24 * days - 1000 * 60 * 60 * hours).toInt() / (1000 * 60)
-    //    Toast.makeText(context, min.toString(), Toast.LENGTH_LONG).show()
 
         return hours.toString()
     }
