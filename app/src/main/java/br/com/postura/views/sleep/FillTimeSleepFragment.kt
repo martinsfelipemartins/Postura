@@ -1,20 +1,18 @@
 package br.com.postura.views.sleep
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TimePicker
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import br.com.postura.R
-import br.com.postura.utils.*
+import br.com.postura.utils.configTimePickerUtil
+import br.com.postura.utils.getSleepHourSelected
+import br.com.postura.utils.getSleepMinutesSelected
 import br.com.postura.views.wakeup.FillTimeWakeUpFragment
 import kotlinx.android.synthetic.main.fragment_fill_time.*
 import kotlinx.android.synthetic.main.toolbar_fill_time.*
-import java.text.SimpleDateFormat
-import java.util.*
 
 
 /**

@@ -21,11 +21,6 @@ class AlarmReceiver: BroadcastReceiver() {
             Constants.ACTION_SET_EXACT -> {
                 notificationManager.buildNotification(context, "Set Exact Time", convertDate(timeInMillis))
             }
-
-          /*  Constants.ACTION_SET_REPETITIVE_EXACT -> {
-                setRepetitiveAlarm(AlarmService(context))
-                notificationManager.buildNotification(context, "Set Repetitive Exact Time", convertDate(timeInMillis))
-            }*/
         }
     }
 

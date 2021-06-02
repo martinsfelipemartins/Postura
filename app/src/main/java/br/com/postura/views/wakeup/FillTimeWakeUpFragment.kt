@@ -5,18 +5,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment/*
-import kotlinx.android.synthetic.main.fragment_fill_time_wake_up.constraintLayoutWakeUp
-import kotlinx.android.synthetic.main.fragment_fill_time_wake_up.hourFilledWake
-import kotlinx.android.synthetic.main.fragment_fill_time_wake_up.minuteFilledWake*/
+import androidx.fragment.app.Fragment
 import br.com.postura.R
 import br.com.postura.utils.configTimePickerUtil
 import br.com.postura.utils.getWakeUpHourSelected
 import br.com.postura.utils.getWakeUpMinutesSelected
-import br.com.postura.views.sleep.FillTimeSleepFragment
 import br.com.postura.views.generatedhours.GeneratedHoursActivity
+import br.com.postura.views.sleep.FillTimeSleepFragment
 import kotlinx.android.synthetic.main.fragment_fill_time_wake_up.*
-import kotlinx.android.synthetic.main.toolbar_fill_time.button_back
+import kotlinx.android.synthetic.main.toolbar_fill_time.*
 
 /**
  * A simple [Fragment] subclass.

@@ -53,8 +53,4 @@ fun getWakeUpHourSelected(): String {
     } else {
         hourWakeUpListener
     }
-
-    fun randomNumber(): Int{
-        return (0..100).random()
-    }
 }
