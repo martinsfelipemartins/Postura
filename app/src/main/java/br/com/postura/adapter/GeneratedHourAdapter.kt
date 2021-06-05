@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.hour__minute_selected_item.view.*
 
 
 class GeneratedHourAdapter(
-        private val chosenHours: List<HourCalculed>
+        private val chosenHours: ArrayList<HourCalculed>
 ) : RecyclerView.Adapter<GeneratedHourAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
